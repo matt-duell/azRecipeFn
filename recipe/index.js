@@ -1,6 +1,7 @@
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
-
+		// DB_CONN_STR
+		context.log(`DB_CONN_STR=[${getEnvVariable(DB_CONN_STR)}]`);
 		context.log(`Request method type: [${context.req.method}]`);
 
 		switch (context.req.method){
@@ -13,6 +14,10 @@ module.exports = async function (context, req) {
 		}
 		
 };
+
+function getEnvVariable(name){
+	return process.env[name];
+}
 
 function doGetRecipes(context){
 	context.log('Retrieving list of recipes');
@@ -50,4 +55,8 @@ function doGetRecipes(context){
 
 function doAddNewRecipe(context){
 	context.log('Adding new recipe');
+
+	context.res = {
+		status: 201
+	};
 }
