@@ -1,7 +1,7 @@
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 		// DB_CONN_STR
-		context.log(`DB_CONN_STR=[${getEnvVariable(DB_CONN_STR)}]`);
+		context.log(`DB_CONN_STR=[${getEnvVariable("DB_CONN_STR")}]`);
 		context.log(`Request method type: [${context.req.method}]`);
 
 		switch (context.req.method){
