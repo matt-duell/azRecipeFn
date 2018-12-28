@@ -30,6 +30,7 @@ function doGetRecipes(context){
 		if(error){
 			context.log('Failed to connect');
 			context.res = { status:500, body: error.stack};
+			return context.done();
 		}
 		context.log('Connected!');
 
@@ -37,6 +38,8 @@ function doGetRecipes(context){
 			if(error){
 				context.log('Error running query');
 				context.res = { status:500, body: error.stack};
+				return context.done();
+
 			}
 			context.log('Success!');
 			context.res = {
